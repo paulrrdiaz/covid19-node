@@ -1,0 +1,43 @@
+{
+  "name": "node-corona",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "clean": "rm -rf build && mkdir build",
+    "babelify": "babel -d ./build ./src -s",
+    "build": "npm run clean && npm run babelify",
+    "start": "npm run build && node ./build/server.js",
+    "dev": "nodemon --require dotenv/config --exec babel-node src/server.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "axios": "^0.19.2",
+    "cheerio": "^1.0.0-rc.3",
+    "cors": "^2.8.5",
+    "country-list": "^2.2.0",
+    "express": "^4.17.1",
+    "express-ip": "^1.0.4",
+    "quick.db": "^7.0.0-b22"
+  },
+  "devDependencies": {
+    "@babel/cli": "^7.8.4",
+    "@babel/core": "^7.8.7",
+    "@babel/node": "^7.8.7",
+    "@babel/plugin-transform-runtime": "^7.8.3",
+    "@babel/preset-env": "^7.8.7",
+    "@babel/runtime": "^7.8.7",
+    "dotenv": "^8.2.0",
+    "eslint": "^6.8.0",
+    "eslint-config-prettier": "^6.10.0",
+    "eslint-config-standard": "^14.1.0",
+    "nodemon": "^2.0.2",
+    "prettier": "^1.19.1"
+  },
+  "engines": {
+    "node": ">=13.7.0",
+    "npm": ">=6.10.0"
+  }
+}
