@@ -101,4 +101,7 @@ setInterval(() => {
   getTotal();
 }, 3600000);
 
+getCountries();
+getTotal();
+
 export default corona;
