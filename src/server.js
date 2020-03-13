@@ -14,6 +14,14 @@ app.use(cors({ origin: "*" }));
 
 app.use(routers);
 
+app.get("/", (req, res) => {
+  res.send({
+    developer: "Paul Diaz Navarrete",
+    linkedin: "https://www.linkedin.com/in/paulrrdiaz/",
+    portfolio: "https://pauls.world",
+  });
+});
+
 app.get("*", (req, res) => {
   res.sendStatus(404);
 });
