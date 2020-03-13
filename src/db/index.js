@@ -28,7 +28,8 @@ const getTotal = async () => {
   for (let i = 0; i < numbers.length; i++) {
     const number = $(numbers[i])
       .children("span")
-      .text();
+      .text()
+      .trim();
     total[Object.keys(total)[i]] = number;
   }
 
@@ -100,8 +101,5 @@ setInterval(() => {
   getCountries();
   getTotal();
 }, 3600000);
-
-getCountries();
-getTotal();
 
 export default corona;
