@@ -16,25 +16,23 @@ const getTotal = async () => {
     return null;
   }
 
-  // to store parsed data
-  const result = {};
+  const total = {
+    cases: null,
+    deaths: null,
+    recovered: null,
+  };
 
-  // get HTML and parse death rates
   const html = $.load(response.data);
-  html(".maincounter-number").filter((i, el) => {
-    let count = el.children[0].next.children[0].data || "0";
-    count = parseInt(count.replace(/,/g, "") || "0", 10);
-    // first one is
-    if (i === 0) {
-      result.cases = count;
-    } else if (i === 1) {
-      result.deaths = count;
-    } else {
-      result.recovered = count;
-    }
-  });
+  const numbers = html(".maincounter-number");
 
-  corona.set("total", result);
+  for (let i = 0; i < numbers.length; i++) {
+    const number = $(numbers[i])
+      .children("span")
+      .text();
+    total[Object.keys(total)[i]] = number;
+  }
+
+  corona.set("total", total);
 };
 
 const getCountries = async () => {
@@ -77,7 +75,7 @@ const getCountries = async () => {
     );
   }
 
-  for (let i = 0; i < rowsNodes.length; i++) {
+  for (let i = 0; i < rowsNodes.length - 1; i++) {
     const cells = $(rowsNodes[i]).children("td");
     let country = {};
 
@@ -99,8 +97,8 @@ const getCountries = async () => {
 };
 
 setInterval(() => {
-  getTotal();
   getCountries();
+  getTotal();
 }, 3600000);
 
 export default corona;
