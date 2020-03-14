@@ -97,9 +97,8 @@ const getCountries = async () => {
   corona.set("countries", countries);
 };
 
-setInterval(() => {
-  getCountries();
-  getTotal();
-}, 600000);
+setInterval(() => {}, 600000);
+getCountries();
+getTotal();
 
 export default corona;
