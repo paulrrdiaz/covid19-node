@@ -100,6 +100,6 @@ const getCountries = async () => {
 setInterval(() => {
   getCountries();
   getTotal();
-}, 3600000);
+}, 600000);
 
 export default corona;
