@@ -1,5 +1,5 @@
 import express from "express";
-import { getName, getData } from "country-list";
+import { getName } from "country-list";
 import Corona from "../models/corona";
 
 const router = express.Router();
@@ -19,7 +19,7 @@ router.get("/api/total", async ({ ipInfo }, res) => {
     const API = new Corona();
     const data = await API.total();
     const response =
-      process.env.NODE_ENV === "development" ? data : { ...data, country: getName(ipInfo.country) };
+      process.env.NODE_ENV !== "development" ? data : { ...data, country: getName(ipInfo.country) };
 
     res.send(response);
   } catch (error) {

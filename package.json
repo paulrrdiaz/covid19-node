@@ -20,7 +20,8 @@
     "country-list": "^2.2.0",
     "express": "^4.17.1",
     "express-ip": "^1.0.4",
-    "quick.db": "^7.0.0-b22"
+    "quick.db": "^7.0.0-b22",
+    "twit": "^2.2.11"
   },
   "devDependencies": {
     "@babel/cli": "^7.8.4",

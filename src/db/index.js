@@ -41,6 +41,7 @@ const getCountries = async () => {
 
   try {
     response = await axios.get("https://www.worldometers.info/coronavirus/");
+
     if (response.status !== 200) {
       console.log("Error", response.status);
     }
@@ -49,7 +50,7 @@ const getCountries = async () => {
   }
 
   const html = $.load(response.data);
-  const table = html("table#main_table_countries");
+  const table = html("table#main_table_countries_today");
   const headingsNodes = table.children("thead").find("th");
   const rowsNodes = table.children("tbody").children("tr");
   const names = {
@@ -90,7 +91,6 @@ const getCountries = async () => {
         [headings[o]]: value.length ? value : 0,
       };
     }
-
     countries.push(country);
   }
 
